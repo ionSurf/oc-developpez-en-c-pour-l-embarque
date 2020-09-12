@@ -1,0 +1,248 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.31.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Javier Prieto, fimedialab, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.31.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.14
+Assembler:       Armasm.exe V6.14
+Linker/Locator:  ArmLink.exe V6.14
+Library Manager: ArmAr.exe V6.14
+Hex Converter:   FromElf.exe V6.14
+CPU DLL:         SARMCM3.DLL V5.31.0.0
+Dialog DLL:      DARMSTM.DLL V1.68.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
+Dialog DLL:      TARMSTM.DLL V1.66.0.0
+ 
+<h2>Project:</h2>
+C:\Users\ionSurf\Documents\oc-embarque\06.projet\oc-projet-01.uvprojx
+Project File Date:  09/07/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Reel'
+assembling startup_stm32f10x_md.s...
+RTE/Device/STM32F101RB/system_stm32f10x.c(167): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+            ^
+RTE/Device/STM32F101RB/system_stm32f10x.c(167): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+    ^
+1 warning generated.
+compiling system_stm32f10x.c...
+src/main.c(1): warning: In file included from...
+src/stm32_ocjeu.h(4): warning: In file included from...
+src/stm32_oclib.h(12): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOA->CRL &= ~( 0xF << 4*5 );
+               ~~ ^~~~~~~~~~~~~~~
+src/stm32_oclib.h(10): warning: no previous prototype for function 'configure_gpio_pa5' [-Wmissing-prototypes]
+void configure_gpio_pa5(void) {
+     ^
+src/stm32_oclib.h(10): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void configure_gpio_pa5(void) {
+^
+static 
+src/stm32_oclib.h(18): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOC->CRH &= ~( 0xF << 4*5 );
+               ~~ ^~~~~~~~~~~~~~~
+src/stm32_oclib.h(16): warning: no previous prototype for function 'configure_gpio_pc13' [-Wmissing-prototypes]
+void configure_gpio_pc13(void) {
+     ^
+src/stm32_oclib.h(16): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void configure_gpio_pc13(void) {
+^
+static 
+src/stm32_oclib.h(22): warning: no previous prototype for function 'set_gpio' [-Wmissing-prototypes]
+void set_gpio( GPIO_TypeDef *GPIO, int n ) {
+     ^
+src/stm32_oclib.h(22): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void set_gpio( GPIO_TypeDef *GPIO, int n ) {
+^
+static 
+src/stm32_oclib.h(26): warning: no previous prototype for function 'reset_gpio' [-Wmissing-prototypes]
+void reset_gpio( GPIO_TypeDef *GPIO, int n ) {
+     ^
+src/stm32_oclib.h(26): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void reset_gpio( GPIO_TypeDef *GPIO, int n ) {
+^
+static 
+src/stm32_oclib.h(30): warning: unused parameter 'GPIO' [-Wunused-parameter]
+void toggle_gpio( GPIO_TypeDef *GPIO, int n ) {
+                                ^
+src/stm32_oclib.h(30): warning: unused parameter 'n' [-Wunused-parameter]
+void toggle_gpio( GPIO_TypeDef *GPIO, int n ) {
+                                          ^
+src/stm32_oclib.h(30): warning: no previous prototype for function 'toggle_gpio' [-Wmissing-prototypes]
+void toggle_gpio( GPIO_TypeDef *GPIO, int n ) {
+     ^
+src/stm32_oclib.h(30): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void toggle_gpio( GPIO_TypeDef *GPIO, int n ) {
+^
+static 
+src/stm32_oclib.h(35): warning: unused variable 'value' [-Wunused-variable]
+    unsigned int value = 0x0;
+                 ^
+src/stm32_oclib.h(34): warning: no previous prototype for function 'read_gpio' [-Wmissing-prototypes]
+unsigned int read_gpio( GPIO_TypeDef *GPIO, unsigned short n ) {
+             ^
+src/stm32_oclib.h(34): note: declare 'static' if the function is not intended to be used outside of this translation unit
+unsigned int read_gpio( GPIO_TypeDef *GPIO, unsigned short n ) {
+^
+static 
+src/stm32_oclib.h(41): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+    TIM->ARR = arr;
+             ~ ^~~
+src/stm32_oclib.h(42): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+    TIM->PSC = psc;
+             ~ ^~~
+src/stm32_oclib.h(39): warning: no previous prototype for function 'configure_timer' [-Wmissing-prototypes]
+void configure_timer( TIM_TypeDef *TIM, unsigned int psc, unsigned int arr ) {
+     ^
+src/stm32_oclib.h(39): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void configure_timer( TIM_TypeDef *TIM, unsigned int psc, unsigned int arr ) {
+^
+static 
+src/stm32_oclib.h(45): warning: no previous prototype for function 'configure_it' [-Wmissing-prototypes]
+void configure_it(void) {
+     ^
+src/stm32_oclib.h(45): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void configure_it(void) {
+^
+static 
+src/stm32_oclib.h(51): warning: no previous prototype for function 'start_timer' [-Wmissing-prototypes]
+void start_timer( TIM_TypeDef *TIM ) {
+     ^
+src/stm32_oclib.h(51): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void start_timer( TIM_TypeDef *TIM ) {
+^
+static 
+src/stm32_oclib.h(64): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+src/stm32_oclib.h(55): warning: no previous prototype for function 'stop_timer' [-Wmissing-prototypes]
+void stop_timer( TIM_TypeDef *TIM ) {
+     ^
+src/stm32_oclib.h(55): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void stop_timer( TIM_TypeDef *TIM ) {
+^
+static 
+src/main.c(1): warning: In file included from...
+src/stm32_ocjeu.h(16): warning: unused parameter 'min' [-Wunused-parameter]
+unsigned short gen_random_time( unsigned int min, unsigned int max ) {
+                                             ^
+src/stm32_ocjeu.h(16): warning: unused parameter 'max' [-Wunused-parameter]
+unsigned short gen_random_time( unsigned int min, unsigned int max ) {
+                                                               ^
+src/stm32_ocjeu.h(16): warning: no previous prototype for function 'gen_random_time' [-Wmissing-prototypes]
+unsigned short gen_random_time( unsigned int min, unsigned int max ) {
+               ^
+src/stm32_ocjeu.h(16): note: declare 'static' if the function is not intended to be used outside of this translation unit
+unsigned short gen_random_time( unsigned int min, unsigned int max ) {
+^
+static 
+src/stm32_ocjeu.h(40): warning: no previous prototype for function 'get_clock_freq' [-Wmissing-prototypes]
+unsigned int get_clock_freq() {
+             ^
+src/stm32_ocjeu.h(40): note: declare 'static' if the function is not intended to be used outside of this translation unit
+unsigned int get_clock_freq() {
+^
+static 
+src/stm32_ocjeu.h(51): warning: implicit conversion loses integer precision: 'unsigned int' to 'unsigned short' [-Wimplicit-int-conversion]
+                res = ( ms * MAX_CLOCK / 1000 );
+                    ~   ~~~~~~~~~~~~~~~^~~~~~
+src/stm32_ocjeu.h(44): warning: unused parameter 'clock_freq' [-Wunused-parameter]
+unsigned short get_min_prescaler( unsigned int clock_freq, unsigned int ms ) {
+                                               ^
+src/stm32_ocjeu.h(44): warning: no previous prototype for function 'get_min_prescaler' [-Wmissing-prototypes]
+unsigned short get_min_prescaler( unsigned int clock_freq, unsigned int ms ) {
+               ^
+src/stm32_ocjeu.h(44): note: declare 'static' if the function is not intended to be used outside of this translation unit
+unsigned short get_min_prescaler( unsigned int clock_freq, unsigned int ms ) {
+^
+static 
+src/stm32_ocjeu.h(57): warning: no previous prototype for function 'time_to_timer_config' [-Wmissing-prototypes]
+void time_to_timer_config( unsigned short ms, TimerConfig* tc ) {
+     ^
+src/stm32_ocjeu.h(57): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void time_to_timer_config( unsigned short ms, TimerConfig* tc ) {
+^
+static 
+src/stm32_ocjeu.h(65): warning: no previous prototype for function 'freq_to_timer_config' [-Wmissing-prototypes]
+void freq_to_timer_config( unsigned int freq, TimerConfig* tc ) {
+     ^
+src/stm32_ocjeu.h(65): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void freq_to_timer_config( unsigned int freq, TimerConfig* tc ) {
+^
+static 
+src/stm32_ocjeu.h(73): warning: no previous prototype for function 'config_push_wait_timer' [-Wmissing-prototypes]
+void config_push_wait_timer( TimerConfig* tc ) {
+     ^
+src/stm32_ocjeu.h(73): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void config_push_wait_timer( TimerConfig* tc ) {
+^
+static 
+src/stm32_ocjeu.h(83): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+src/stm32_ocjeu.h(78): warning: no previous prototype for function 'config_blink_wait_timer' [-Wmissing-prototypes]
+void config_blink_wait_timer( TimerConfig* tc ) {
+     ^
+src/stm32_ocjeu.h(78): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void config_blink_wait_timer( TimerConfig* tc ) {
+^
+static 
+src/main.c(42): warning: 'return' will never be executed [-Wunreachable-code-return]
+                return 0;
+                       ^
+src/main.c(45): warning: no previous prototype for function 'TIM2_IRQHandler' [-Wmissing-prototypes]
+void TIM2_IRQHandler(void) {
+     ^
+src/main.c(45): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void TIM2_IRQHandler(void) {
+^
+static 
+32 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=1380 RO-data=252 RW-data=0 ZI-data=1648  
+".\Objects\oc-projet-01.axf" - 0 Error(s), 33 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\Device\STM32F101RB
+  .\RTE\_Reel
+  C:\Users\ionSurf\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Users\ionSurf\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+      Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\system_stm32f10x.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
