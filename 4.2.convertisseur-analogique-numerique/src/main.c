@@ -8,10 +8,10 @@
  * Le PWM doit se configurer pour utiliser le CH
  */
 
-void configure_gpio_pa6_alternate_push_pull() {
-    RCC->APB2ENR = RCC_APB2ENR_IOPAEN;
-    RCC->CR1 &= ~( 0xF << 24 );
-    RCC->CR1 |= ( 0xA << 24 );
+void configure_gpio_pa6_alternate_push_pull(){
+    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN; // validation de l'horloge de PA
+    GPIOA->CRL &= ~(0xF << 24); // PA.6 alternate push-pull
+    GPIOA->CRL |= (0xA << 24); // PA.6 alternate push-pull
 }
 
 void configure_pwm_ch1_20khz(TIM_TypeDef *TIMER){
@@ -36,8 +36,8 @@ void configure_gpio_pb0_analog_input() {
     RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
     
     // Paramétrer la broche GPIOB.0
-    //GPIOB->CR1 &= ~( (0x1 << 0) | (0x1 << 1) | (0x1)   )
-    GPIOB->CR1 &= ~( 0XFF  );
+    GPIOB->CRL &= ~((0x1 << 0) | (0x1 << 1) | (0x1 << 2) | (0x1 << 3));
+    //GPIOB->CRL &= ~( 0XFF  );
 }
 
 void configure_adc_in8() {
@@ -53,7 +53,7 @@ void configure_adc_in8() {
     ADC1->SQR3 |= 8;
     
     // Initialiser la calibration
-    ADC1->CR2 |= ADC1_CR2_CAL;
+    ADC1->CR2 |= ADC_CR2_CAL;
     // Scrutin de la calibration
     while( ADC1->CR2 & ADC_CR2_CAL );
 }
@@ -63,20 +63,21 @@ int convert_single() {
     ADC1->CR2 |= ADC_CR2_ADON;
 
     // Scrutin / attente de la fin de la conversion
-    while( !(ADC1->SR & ADC1_SR_EOC) );
+    while( !(ADC1->SR & ADC_SR_EOC) );
 
     // Redemarrage de la conversion
-    ADC1->SR &= ~ADC1_SR_EOC;
+    ADC1->SR &= ~ADC_SR_EOC;
 
     // Retour de la conversion
-    return ADC1->DR & ~( 0x0F << 12 );
+    return ADC1->DR &= ~( 0x0F << 12 );
 }
 
 int main(void) {
     int res = 0;
+	  int pulse = 0;
 
     // configuration du PWM - potentiomètre
-    configure_gpio_pb0_analog_input();
+    configure_gpio_pa6_alternate_push_pull();
     configure_pwm_ch1_20khz( TIM3 );
     set_pulse_percentage( TIM3, 0 );
     
@@ -89,6 +90,7 @@ int main(void) {
     while(1) {
         res = convert_single();
         // Resolution de 12 bits == 2**12 == 16***3 == 0xFFF
-        set_pulse_percentage( TIM3, 100 * res / 0xFFF )
+			pulse = 100*res/0xFFF;
+        set_pulse_percentage( TIM3, pulse );
     }
 }
